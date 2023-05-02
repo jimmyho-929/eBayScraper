@@ -45,14 +45,14 @@ This script uses Streamlit to create a web app that allows users to interact wit
 
 A progress bar is also displayed during the scraping process to provide visual feedback to the user.
 
-### Dockerization and Deployment
+### Dockerization and Deployment:
 The eBay Scraper web app is containerized using Docker, with the Dockerfile specifying the necessary steps to build the Docker image.
 
 To deploy the Dockerized app to Google Cloud Platform (GCP), we used Google Cloud Run, a fully managed serverless platform that enables running stateless containers.
 
 The deployment process involves building the Docker image, pushing it to the Google Container Registry (GCR), and then deploying it to Cloud Run. The web app is then accessible through a generated URL.
 
-### Additional Information
+### Additional Information:
 The eBay Scraper is a flexible and easy-to-use tool that can be extended to scrape additional product categories or incorporate additional features. By providing a user-friendly web interface and detailed documentation, we hope to streamline the process of getting started with the eBay Scraper and make it accessible to both technical and non-technical users alike.
 
 ## Troubleshooting and Common Issues
