@@ -56,11 +56,11 @@ The deployment process involves building the Docker image, pushing it to the Goo
 The eBay Scraper is a flexible and easy-to-use tool that can be extended to scrape additional product categories or incorporate additional features. By providing a user-friendly web interface and detailed documentation, we hope to streamline the process of getting started with the eBay Scraper and make it accessible to both technical and non-technical users alike.
 
 ## Troubleshooting and Common Issues
-### 1. Timeout Error
+#### Timeout Error
 If you encounter a timeout error during the scraping process, it may be caused by a slow internet connection or a temporary issue with the eBay website. In this case, try rerunning the script or refreshing the web app.
-### 2. Missing Data
+#### Missing Data
 If some fields in the CSV file are marked as "N/A," it could mean that the data was not available in the eBay listing, or the scraper failed to parse the data correctly. Double-check the URL associated with the product to confirm the data's availability.
-### 3. Updating the Search Query
+#### Updating the Search Query
 To modify the search query, update the base_url variable in scraper_ebay.py. Replace the search term in the URL with your desired query. For example, to search for "laptops" instead of "kitchen appliances," change the URL to:
 
 base_url = "https://www.ebay.com/sch/i.html?_nkw=laptops&_sacat=0&_ipg=100&_pgn="
