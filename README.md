@@ -40,7 +40,7 @@ This script contains several functions that work together to scrape eBay listing
 
 The main() function orchestrates the scraping process by generating URLs for each eBay search results page, calling get_ebay_data() to fetch the page content, and then parsing and saving the product data.
 
-### app.py
+### app.py:
 This script uses Streamlit to create a web app that allows users to interact with the eBay Scraper. When the "Scrape eBay Listings" button is clicked, the app calls the scrape_ebay() function from scraper_ebay.py. Once the scraping is complete, a "Download CSV" button is displayed, allowing users to download the kitchen_appliances.csv file.
 
 A progress bar is also displayed during the scraping process to provide visual feedback to the user.
