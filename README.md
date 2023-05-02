@@ -27,3 +27,61 @@ This will save the scraped data to a file named kitchen_appliances.csv in the pr
 
 Alternatively, you can access the deployed web app at https://ebay-scraper-smzlbqiv4q-uc.a.run.app/. Click the "Scrape eBay Listings" button to begin the scraping process, and then download the CSV file once the scraping is complete.
 
+# Code Overview
+The eBay Scraper comprises two main components:
+1. scraper_ebay.py: The core script responsible for scraping eBay product listings.
+2. app.py: The Streamlit web app that provides a user-friendly interface for interacting with the scraper.
+
+### scraper_ebay.py:
+This script contains several functions that work together to scrape eBay listings:
+- get_ebay_data(url): Sends an HTTP request to the specified URL and returns a BeautifulSoup object containing the page content.
+- parse_ebay_product_data(product): Extracts relevant product information from the BeautifulSoup object and returns a dictionary containing the data.
+- save_to_csv(products, filename): Writes the scraped product data to a CSV file.
+
+The main() function orchestrates the scraping process by generating URLs for each eBay search results page, calling get_ebay_data() to fetch the page content, and then parsing and saving the product data.
+
+### app.py
+This script uses Streamlit to create a web app that allows users to interact with the eBay Scraper. When the "Scrape eBay Listings" button is clicked, the app calls the scrape_ebay() function from scraper_ebay.py. Once the scraping is complete, a "Download CSV" button is displayed, allowing users to download the kitchen_appliances.csv file.
+
+A progress bar is also displayed during the scraping process to provide visual feedback to the user.
+
+### Dockerization and Deployment
+The eBay Scraper web app is containerized using Docker, with the Dockerfile specifying the necessary steps to build the Docker image.
+
+To deploy the Dockerized app to Google Cloud Platform (GCP), we used Google Cloud Run, a fully managed serverless platform that enables running stateless containers.
+
+The deployment process involves building the Docker image, pushing it to the Google Container Registry (GCR), and then deploying it to Cloud Run. The web app is then accessible through a generated URL.
+
+### Additional Information
+The eBay Scraper is a flexible and easy-to-use tool that can be extended to scrape additional product categories or incorporate additional features. By providing a user-friendly web interface and detailed documentation, we hope to streamline the process of getting started with the eBay Scraper and make it accessible to both technical and non-technical users alike.
+
+## Troubleshooting and Common Issues
+### 1. Timeout Error
+If you encounter a timeout error during the scraping process, it may be caused by a slow internet connection or a temporary issue with the eBay website. In this case, try rerunning the script or refreshing the web app.
+### 2. Missing Data
+If some fields in the CSV file are marked as "N/A," it could mean that the data was not available in the eBay listing, or the scraper failed to parse the data correctly. Double-check the URL associated with the product to confirm the data's availability.
+### 3. Updating the Search Query
+To modify the search query, update the base_url variable in scraper_ebay.py. Replace the search term in the URL with your desired query. For example, to search for "laptops" instead of "kitchen appliances," change the URL to:
+
+base_url = "https://www.ebay.com/sch/i.html?_nkw=laptops&_sacat=0&_ipg=100&_pgn="
+
+### Future Enhancements
+- Add support for additional eBay categories or search filters.
+- Implement user authentication to allow multiple users to access the web app simultaneously without affecting each other's scraping sessions.
+- Integrate additional scraping sources or platforms to expand the app's capabilities.
+- Implement a scheduling feature to automate the scraping process at specific intervals.
+- Add data visualization tools within the web app to help users analyze the scraped data more effectively.
+
+
+### Contributing
+We welcome contributions from the community! To contribute, please follow these steps:
+- Fork the repository on GitHub.
+- Create a new branch for your changes.
+- Make your changes and commit them to your branch.
+- Create a pull request with a description of your changes.
+- We will review your pull request and provide feedback. Once your changes are approved, they will be merged into the main repository.
+
+### Support
+If you have any questions, issues, or suggestions for improvement, please feel free to open an issue on the GitHub repository or contact the maintainers directly.
+
+We appreciate your interest in Creospan's eBay Scraper and look forward to helping you make the most of this powerful tool!
