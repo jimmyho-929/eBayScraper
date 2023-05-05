@@ -52,6 +52,20 @@ To deploy the Dockerized app to Google Cloud Platform (GCP), we used Google Clou
 
 The deployment process involves building the Docker image, pushing it to the Google Container Registry (GCR), and then deploying it to Cloud Run. The web app is then accessible through a generated URL.
 
+Build the Docker Image: docker build -t gcr.io/YOUR_PROJECT_ID/ebay-scraper .
+
+Push the Docker image to Google Container Registry: docker push gcr.io/YOUR_PROJECT_ID/ebay-scraper
+
+Deploy Streamlit app to Cloud Run:
+gcloud run deploy ebay-scraper \
+  --image gcr.io/YOUR_PROJECT_ID/ebay-scraper \
+  --platform managed \
+  --port 8501 \
+  --memory 1Gi \
+  --allow-unauthenticated \
+  --region us-central1 \
+  --set-env-vars=STREAMLIT_SERVER_PORT=8501
+
 ### Additional Information:
 The eBay Scraper is a flexible and easy-to-use tool that can be extended to scrape additional product categories or incorporate additional features. By providing a user-friendly web interface and detailed documentation, we hope to streamline the process of getting started with the eBay Scraper and make it accessible to both technical and non-technical users alike.
 
