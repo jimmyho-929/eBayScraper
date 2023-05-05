@@ -52,13 +52,13 @@ To deploy the Dockerized app to Google Cloud Platform (GCP), we used Google Clou
 
 The deployment process involves building the Docker image, pushing it to the Google Container Registry (GCR), and then deploying it to Cloud Run. The web app is then accessible through a generated URL.
 
-Build the Docker Image: docker build -t gcr.io/YOUR_PROJECT_ID/ebay-scraper .
+Build the Docker Image: docker build -t gcr.io/creospandataanalyzer/ebay-scraper .
 
-Push the Docker image to Google Container Registry: docker push gcr.io/YOUR_PROJECT_ID/ebay-scraper
+Push the Docker image to Google Container Registry: docker push gcr.io/creospandataanalyzer/ebay-scraper
 
 Deploy Streamlit app to Cloud Run:
 gcloud run deploy ebay-scraper \
-  --image gcr.io/YOUR_PROJECT_ID/ebay-scraper \
+  --image gcr.io/creospandataanalyzer/ebay-scraper \
   --platform managed \
   --port 8501 \
   --memory 1Gi \
