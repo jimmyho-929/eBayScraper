@@ -1,7 +1,26 @@
 # Creospan's eBay Scraper
 
+![scraper screenshot](https://github.com/jsocarras/eBayScraper/assets/37901304/f1f74ea9-836e-48a0-a490-be73be5d9e46)
+
 ## Introduction
 Creospan's eBay Scraper is a powerful tool that simplifies the process of scraping eBay product listings. Built using Python, this application can be run locally or deployed as a web app. The scraper searches for kitchen appliances on eBay and exports the collected data to a CSV file. With an easy-to-use web interface, users can download the CSV containing the data, making it convenient for further analysis or processing.
+
+## Value Proposition Thesis
+Our solution is a highly adaptable and extendable web scraper system that can be customized to extract data from any eCommerce platform like Amazon, eBay, etc. It is designed with a microservices-first approach, making it easy to add new features such as user authentication, transaction history, and more. This system can help businesses access vital eCommerce data, understand market trends, assess product pricing strategies, and eventually even automate the purchase of underpriced products. It's an all-in-one tool for data-driven decision making in eCommerce.
+
+## Possible Go-To-Market Strategies
+### Go-to-Market Strategy 1: SaaS Model
+Launch the scraper as a web application where users can subscribe on a monthly or yearly basis to use your service. They can input what data they want to scrape, and our service will provide them with the scraped data in a structured format such as CSV. This is a straightforward approach, easily measurable by user acquisition, engagement and subscription revenue.
+
+### Go-to-Market Strategy 2: Custom Solutions Provider
+Instead of a standalone web app, we could offer our service as a custom solutions provider. Customers would describe what they need, and we would provide them a fully functioning scraper program. We could charge a fee for the initial setup, and then a maintenance fee for keeping the program updated and functional. This approach will be more resource-intensive but might attract larger businesses and lead to bigger deals.
+
+### Go-to-Market Strategy 3: Data Reseller
+Use our scraper to gather eCommerce data, analyze it for insights, and then sell these insights to interested parties. This could be pricing data, popular products, trends over time, etc. We could set up a subscription service for regular reports or charge on a per-report basis. It would be easy to measure the success of this model by the number of reports sold or subscriptions received.
+
+### Go-to-Market Strategy 4: Product Arbitrage
+Use our scraper to automatically find undervalued products, buy them, and then resell them at a higher price. This would require some initial investment and would involve more risk, but the potential rewards could also be significant. This strategy would be measured by the profit made from buying and selling products.
+
 
 ## Getting Started
 ### Prerequisites
