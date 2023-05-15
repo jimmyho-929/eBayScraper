@@ -68,11 +68,17 @@ A progress bar is also displayed during the scraping process to provide visual f
 ### Dockerization and Deployment:
 #### All Commands:
 gcloud init
+
 gcloud config set project creospandataanalyzer
+
 docker build -t gcr.io/creospandataanalyzer/ebay-scraper .
+
 docker login
+
 docker scan gcr.io/creospandataanalyzer/ebay-scraper
+
 docker push gcr.io/creospandataanalyzer/ebay-scraper
+
 gcloud run deploy ebay-scraper \
 --image gcr.io/creospandataanalyzer/ebay-scraper \
 --platform managed \
