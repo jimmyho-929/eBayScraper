@@ -128,7 +128,7 @@ base_url = "https://www.ebay.com/sch/i.html?_nkw=laptops&_sacat=0&_ipg=100&_pgn=
 - Integrate additional scraping sources or platforms to expand the app's capabilities.
 - Implement a scheduling feature to automate the scraping process at specific intervals.
 - Add data visualization tools within the web app to help users analyze the scraped data more effectively.
-
+- Remember to ensure that your scraper respects the eBay robots.txt and terms of service to avoid any potential legal and ethical issues.
 
 ### Contributing
 We welcome contributions from the community! To contribute, please follow these steps:
