@@ -2,6 +2,8 @@ import streamlit as st
 import os
 import shutil
 import time
+import threading
+import pandas as pd
 from scraper_ebay import main as scrape_ebay
 
 def create_download_link(filename):
@@ -12,6 +14,13 @@ def create_download_link(filename):
             file_name="kitchen_appliances.csv",
             mime="text/csv",
         )
+
+def convert_price(price):
+    if ' to ' in price:
+        low, high = price.split(' to ')
+        return (float(low) + float(high)) / 2
+    else:
+        return float(price)
 
 st.title("Creospan's eBay Scraper")
 
@@ -27,7 +36,6 @@ if st.button("Scrape eBay Listings"):
         scrape_ebay()
         progress_pct = 100
 
-    import threading
     t = threading.Thread(target=run_scrape)
     t.start()
 
@@ -38,4 +46,22 @@ if st.button("Scrape eBay Listings"):
         time.sleep(0.15)
 
     t.join()  # Wait for the scraping thread to complete
+
+    # Load the scraped data
+    data = pd.read_csv("kitchen_appliances.csv")
+
+    # Make sure 'price' column is numeric.
+    data['price'] = data['price'].str.replace('$', '').apply(convert_price)
+
+    # Display the data in a table
+    st.dataframe(data)
+
+    # Display some basic statistics
+    st.markdown(f"Number of products: {len(data)}")
+    st.markdown(f"Average price: ${data['price'].mean():.2f}")
+    st.markdown(f"Number of free shipping offers: {data['Free Shipping'].sum()}")
+
+    # Display a histogram of prices
+    st.bar_chart(data['price'])
+
     create_download_link("kitchen_appliances.csv")
