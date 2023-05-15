@@ -66,6 +66,23 @@ This script uses Streamlit to create a web app that allows users to interact wit
 A progress bar is also displayed during the scraping process to provide visual feedback to the user.
 
 ### Dockerization and Deployment:
+#### All Commands:
+gcloud init
+gcloud config set project creospandataanalyzer
+docker build -t gcr.io/creospandataanalyzer/ebay-scraper .
+docker login
+docker scan gcr.io/creospandataanalyzer/ebay-scraper
+docker push gcr.io/creospandataanalyzer/ebay-scraper
+gcloud run deploy ebay-scraper \
+--image gcr.io/creospandataanalyzer/ebay-scraper \
+--platform managed \
+--port 8501 \
+--memory 1Gi \
+--allow-unauthenticated \
+--region us-central1 \
+--set-env-vars=STREAMLIT_SERVER_PORT=8501
+
+#### Explanation:
 The eBay Scraper web app is containerized using Docker, with the Dockerfile specifying the necessary steps to build the Docker image.
 
 To deploy the Dockerized app to Google Cloud Platform (GCP), we used Google Cloud Run, a fully managed serverless platform that enables running stateless containers.
