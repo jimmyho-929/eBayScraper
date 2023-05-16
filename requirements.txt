@@ -1,8 +1,11 @@
 streamlit
 bs4
 requests
+<<<<<<< HEAD
 pandas
 csv
 re
 webbrowser
 collections
+=======
+>>>>>>> origin/main

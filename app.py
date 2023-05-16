@@ -1,5 +1,4 @@
 import streamlit as st
-import csv
 import os
 import shutil
 import time
@@ -17,27 +16,11 @@ def create_download_link(filename):
         )
 
 def convert_price(price):
-    # Handle NaN and None values
-    if pd.isna(price) or price is None:
-        return pd.NA
-
-    # If price is a float or int, just return it
-    if isinstance(price, (float, int)):
-        return price
-
-    # Otherwise, assume it's a string and process it
-    price = str(price)
-
-    if price == 'N/A':
-        return pd.NA
     if ' to ' in price:
         low, high = price.split(' to ')
         return (float(low) + float(high)) / 2
     else:
-        # Remove any non-numeric characters (like '$')
-        price = ''.join(c for c in price if c.isdigit() or c == '.')
         return float(price)
-
 
 st.title("Creospan's eBay Scraper")
 
@@ -66,34 +49,9 @@ if st.button("Scrape eBay Listings"):
 
     # Load the scraped data
     data = pd.read_csv("kitchen_appliances.csv")
-    # Make sure 'price' column is numeric.
-    if data['price'].dtype == 'object':
-        data['price'] = data['price'].apply(lambda x: str(x).replace('$', '') if isinstance(x, str) else x)
-        data['price'] = data['price'].apply(convert_price)
-
-    # Load the recommended buys
-    with open('kitchen_appliances.csv', 'r') as f:
-        reader = csv.DictReader(f)
-        recommended_buys = [row for row in reader][-3:]  # assuming the recommended buys are the last 3 lines
-
-    # Display the recommended buys
-    for i, recommended_buy in enumerate(recommended_buys):
-        recommended_buy_title = recommended_buy.get('title', 'N/A')
-        recommended_buy_price = recommended_buy.get('price', 'N/A')
-        st.markdown(f"Recommended Buy #{i+1}: {recommended_buy_title} for {recommended_buy_price}")
-
-        if st.button(f"Buy Now #{i+1}"):
-            print("recommended_buy: ")
-            print(recommended_buy['URL'])
-            webbrowser.open(recommended_buy['URL'])
 
     # Make sure 'price' column is numeric.
-    if data['price'].dtype == 'object':
-        data['price'] = data['price'].apply(lambda x: str(x).replace('$', '') if isinstance(x, str) else x)
-        data['price'] = data['price'].apply(convert_price)
-    else:
-        data['price'] = data['price'].apply(convert_price)
-
+    data['price'] = data['price'].str.replace('$', '').apply(convert_price)
 
     # Display the data in a table
     st.dataframe(data)
@@ -107,3 +65,33 @@ if st.button("Scrape eBay Listings"):
     st.bar_chart(data['price'])
 
     create_download_link("kitchen_appliances.csv")
+
+
+    # Recomended buys
+        # # Make sure 'price' column is numeric.
+        # if data['price'].dtype == 'object':
+        #     data['price'] = data['price'].apply(lambda x: str(x).replace('$', '') if isinstance(x, str) else x)
+        #     data['price'] = data['price'].apply(convert_price)
+        #
+        # # Load the recommended buys
+        # with open('kitchen_appliances.csv', 'r') as f:
+        #     reader = csv.DictReader(f)
+        #     recommended_buys = [row for row in reader][-3:]  # assuming the recommended buys are the last 3 lines
+        #
+        # # Display the recommended buys
+        # for i, recommended_buy in enumerate(recommended_buys):
+        #     recommended_buy_title = recommended_buy.get('title', 'N/A')
+        #     recommended_buy_price = recommended_buy.get('price', 'N/A')
+        #     st.markdown(f"Recommended Buy #{i+1}: {recommended_buy_title} for {recommended_buy_price}")
+        #
+        #     if st.button(f"Buy Now #{i+1}"):
+        #         print("recommended_buy: ")
+        #         print(recommended_buy['URL'])
+        #         webbrowser.open(recommended_buy['URL'])
+        #
+        # # Make sure 'price' column is numeric.
+        # if data['price'].dtype == 'object':
+        #     data['price'] = data['price'].apply(lambda x: str(x).replace('$', '') if isinstance(x, str) else x)
+        #     data['price'] = data['price'].apply(convert_price)
+        # else:
+        #     data['price'] = data['price'].apply(convert_price)
