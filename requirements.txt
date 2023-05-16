@@ -2,7 +2,3 @@ streamlit
 bs4
 requests
 pandas
-csv
-re
-webbrowser
-collections
