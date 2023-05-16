@@ -50,21 +50,21 @@ if st.button("Scrape eBay Listings"):
     # Load the scraped data
     data = pd.read_csv("kitchen_appliances.csv")
 
-    # Make sure 'price' column is numeric.
-    data['price'] = data['price'].str.replace('$', '').apply(convert_price)
-
-    # Display the data in a table
-    st.dataframe(data)
-
-    # Display some basic statistics
-    st.markdown(f"Number of products: {len(data)}")
-    st.markdown(f"Average price: ${data['price'].mean():.2f}")
-    st.markdown(f"Number of free shipping offers: {data['Free Shipping'].sum()}")
-
-    # Display a histogram of prices
-    st.bar_chart(data['price'])
-
-    create_download_link("kitchen_appliances.csv")
+    # # Make sure 'price' column is numeric.
+    # data['price'] = data['price'].str.replace('$', '').apply(convert_price)
+    #
+    # # Display the data in a table
+    # st.dataframe(data)
+    #
+    # # Display some basic statistics
+    # st.markdown(f"Number of products: {len(data)}")
+    # st.markdown(f"Average price: ${data['price'].mean():.2f}")
+    # st.markdown(f"Number of free shipping offers: {data['Free Shipping'].sum()}")
+    #
+    # # Display a histogram of prices
+    # st.bar_chart(data['price'])
+    #
+    # create_download_link("kitchen_appliances.csv")
 
 
     # Recomended buys
