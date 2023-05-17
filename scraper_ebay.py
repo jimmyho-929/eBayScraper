@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import csv
+import re
 
 def get_ebay_data(url):
     headers = {
@@ -12,7 +13,7 @@ def get_ebay_data(url):
 
 def parse_ebay_product_data(product):
     title_tag = product.find("span", role_="heading")
-    title = title_tag.text if title_tag else product.find("div", class_="s-item__title").text.strip()
+    title = title_tag.text if title_tag else product.find("div", class_="s-item__title").text.strip()
     price_tag = product.find("span", class_="s-item__price")
     price = price_tag.text if price_tag else "N/A"
     manufacturer_tag = product.find("span", class_="s-item__seller-info-text")
