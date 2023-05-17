@@ -12,8 +12,13 @@ def get_ebay_data(url):
     return soup
 
 def parse_ebay_product_data(product):
-    title_tag = product.find("span", role_="heading")
-    title = title_tag.text if title_tag else product.find("div", class_="s-item__title").text.strip()
+# This code is supposed to help scrape for title listings and replace 'N/A' results    
+# =============================================================================
+#     title_tag = product.find("span", role_="heading")
+#     title = title_tag.text if title_tag else product.find("div", class_="s-item__title").text.strip()
+# =============================================================================
+    title_tag = product.find("h3", class_="s-item__title")
+    title = title_tag.text if title_tag else "N/A"
     price_tag = product.find("span", class_="s-item__price")
     price = price_tag.text if price_tag else "N/A"
     manufacturer_tag = product.find("span", class_="s-item__seller-info-text")
