@@ -22,7 +22,7 @@ def convert_price(price):
     else:
         return float(price)
 
-st.title("Creospan's eBay Scraper!")
+st.title("Creospan's eBay Scraper!!")
 
 st.markdown("Welcome to Creospan's eBay Scraper! Press the button below to scrape and export a list of current listings.")
 
