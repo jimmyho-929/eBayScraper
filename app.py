@@ -22,9 +22,18 @@ def convert_price(price):
     else:
         return float(price)
 
-st.title("Creospan's eBay Scraper!")
+logo_path = 'img/creospan_logo.jpg'
+st.image(logo_path, width=235)
 
-st.markdown("Welcome to Creospan's eBay Scraper! Press the button below to scrape and export a list of current listings.")
+# url = 'https://www.creospan.com'  
+
+# link = '<a href="{}" target="_blank"><img src="{}" alt="creospan logo"></a>'.format(url, logo_path)
+# st.markdown(link, unsafe_allow_html=True)
+
+
+st.title("Creospan's eBay Scraper")
+
+st.markdown("Welcome to Creospan's eBay Scraper! Press the button below to scrape and export a list of current kitchen appliance listings.")
 
 if st.button("Scrape eBay Listings"):
     progress = st.progress(0)
